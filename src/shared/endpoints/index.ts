@@ -1,0 +1,3 @@
+const PriceEndpoints = {};
+
+export { PriceEndpoints };
