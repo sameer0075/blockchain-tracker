@@ -5,7 +5,6 @@ dotenv.config()
 
 // Initialize Moralis with API key
 const apiKey = process.env.MORALIS_API_KEY;
-console.log("apiKey", apiKey)
 Moralis.start({
   apiKey: apiKey,
 });
