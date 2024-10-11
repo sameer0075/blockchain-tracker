@@ -1,28 +1,31 @@
 import Moralis from 'moralis';
+import * as dotenv from 'dotenv'
+
+dotenv.config()
 
 // Initialize Moralis with API key
 const apiKey = process.env.MORALIS_API_KEY;
+console.log("apiKey", apiKey)
 Moralis.start({
   apiKey: apiKey,
 });
 
-// Function to get NFT price data
-async function getNFTPrice(chain, tokenAddress, tokenId) {
+async function getTokenPrice(chain: string,include: string, address: string): Promise<any> {
+  const options: any = {
+    chain,
+    include,
+    address
+  };
+
   try {
-    const response = await Moralis.EvmApi.nft.getNFTMetadata({
-      chain: chain, // 'eth' for Ethereum, 'polygon' for Polygon
-      address: tokenAddress, // Contract address of the NFT
-      tokenId: tokenId, // Specific token ID of the NFT
-    });
-
-    const metadata = response.raw;
-
-    console.log(`NFT Data: ${JSON.stringify(metadata)}`);
-
-    // Get price data (if available)
-    const price = metadata.price || 'Price not available';
-    console.log(`Price: ${price}`);
+    // const priceResponse = await Moralis.EvmApi.token.getTokenPrice(options);
+    // return priceResponse;
+    const response = await Moralis.EvmApi.token.getTokenPrice(options);
+    return response
   } catch (error) {
-    console.error(error);
+    console.error('Error fetching token price:', error);
+    throw error;
   }
 }
+
+export { getTokenPrice }

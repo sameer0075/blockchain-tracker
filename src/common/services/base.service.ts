@@ -1,5 +1,4 @@
 import { Repository } from 'typeorm';
-import { Cache } from 'cache-manager';
 
 export class BaseService<T> {
   private repo;
