@@ -9,13 +9,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   dotenv.config();
   const config = new DocumentBuilder()
-    .setTitle('Todo-App Backend')
+    .setTitle('Blockchain Tracker')
     .setVersion('1.0')
-    .addTag('Todo')
-    .addBearerAuth(
-      { type: 'http', scheme: 'bearer', bearerFormat: 'Authorization' },
-      'Authorization',
-    )
+    .addTag('Blockchain')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
