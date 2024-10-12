@@ -7,7 +7,7 @@ export class Alert {
     id: number;
 
     @ManyToOne(() => Chain, (chain) => chain.alerts)
-    @JoinColumn({ name: 'chain_id' }) // Define the foreign key column name
+    @JoinColumn({ name: 'chainId' }) // Define the foreign key column name
     chain: Chain;
 
     @Column('numeric', { precision: 15, scale: 6 })
@@ -20,5 +20,5 @@ export class Alert {
     is_triggered: boolean;
 
     @Column({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
-    created_at: Date;
+    createdAt: Date;
 }

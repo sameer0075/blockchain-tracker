@@ -10,6 +10,7 @@ import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { PreventMultipleClicksInterceptor } from './common/helper/decorators/prevent-multiple-api-calls.decorator';
 import { HttpExceptionFilter } from './common/helper/exception-filter';
 import { PriceTrackerModule } from './price-tracker/price-tracker.module';
+import { AlertModule } from './alert/alert.module';
 
 
 @Module({
@@ -32,6 +33,7 @@ import { PriceTrackerModule } from './price-tracker/price-tracker.module';
       },
     }),
     PriceTrackerModule,
+    AlertModule,
   ],
   controllers: [AppController],
   providers: [

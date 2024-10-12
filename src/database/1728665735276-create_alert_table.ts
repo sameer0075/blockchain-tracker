@@ -24,10 +24,15 @@ export class CreateAlertTable1728665735276 implements MigrationInterface {
                         length: '100',
                     },
                     {
-                        name: 'priceThreshold',
+                        name: 'target_price',
                         type: 'decimal',
                         precision: 10,
                         scale: 2,
+                    },
+                    {
+                        name: 'is_triggered',
+                        type: 'boolean',
+                        default: false,
                     },
                     {
                         name: 'createdAt',
