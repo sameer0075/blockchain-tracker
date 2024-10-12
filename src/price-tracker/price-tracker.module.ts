@@ -7,9 +7,9 @@ import { Chain } from 'src/shared/entities/chain.entity';
 import { EmailService } from 'src/common/services/mailer.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Price,Chain])],
+  imports: [TypeOrmModule.forFeature([Price, Chain])],
   controllers: [PriceTrackerController],
-  providers: [PriceTrackerService,EmailService],
-  exports:[PriceTrackerService]
+  providers: [PriceTrackerService, EmailService],
+  exports: [PriceTrackerService],
 })
 export class PriceTrackerModule {}

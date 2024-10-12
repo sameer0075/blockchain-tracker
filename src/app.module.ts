@@ -12,7 +12,6 @@ import { HttpExceptionFilter } from './common/helper/exception-filter';
 import { PriceTrackerModule } from './price-tracker/price-tracker.module';
 import { AlertModule } from './alert/alert.module';
 
-
 @Module({
   imports: [
     ConfigModule.forRoot(),

@@ -1,7 +1,7 @@
 import Moralis from 'moralis';
-import * as dotenv from 'dotenv'
+import * as dotenv from 'dotenv';
 
-dotenv.config()
+dotenv.config();
 
 // Initialize Moralis with API key
 const apiKey = process.env.MORALIS_API_KEY;
@@ -9,18 +9,22 @@ Moralis.start({
   apiKey: apiKey,
 });
 
-async function getTokenPrice(chain: string,include: string, address: string): Promise<any> {
+async function getTokenPrice(
+  chain: string,
+  include: string,
+  address: string,
+): Promise<any> {
   const options: any = {
     chain,
     include,
-    address
+    address,
   };
 
   try {
     // const priceResponse = await Moralis.EvmApi.token.getTokenPrice(options);
     // return priceResponse;
-    const response = await Moralis.EvmApi.token.getTokenPrice(options,);
-    return response
+    const response = await Moralis.EvmApi.token.getTokenPrice(options);
+    return response;
   } catch (error) {
     console.error('Error fetching token price:', error);
     throw error;
@@ -54,7 +58,11 @@ const getHistoricalBlock = async (chain: string, address: string) => {
   }
 };
 
-const getHistoricalPrice = async (chain: string, address: string, block: number) => {
+const getHistoricalPrice = async (
+  chain: string,
+  address: string,
+  block: number,
+) => {
   const options: any = {
     chain,
     address,
@@ -70,4 +78,4 @@ const getHistoricalPrice = async (chain: string, address: string, block: number)
   }
 };
 
-export { getTokenPrice, getHistoricalPrice , getHistoricalBlock}
+export { getTokenPrice, getHistoricalPrice, getHistoricalBlock };

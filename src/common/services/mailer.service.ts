@@ -7,9 +7,9 @@ export class EmailService {
 
   async sendPlainTextEmail(to: string, subject: string, text: string) {
     await this.mailerService.sendMail({
-      to,          // Recipient email
-      subject,     // Email subject
-      text,        // Plain text content
+      to, // Recipient email
+      subject, // Email subject
+      text, // Plain text content
     });
   }
 }
