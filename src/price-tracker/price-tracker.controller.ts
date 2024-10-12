@@ -11,8 +11,9 @@ import { PriceTrackerService } from './price-tracker.service';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { ApiTags } from '@nestjs/swagger';
 import { ApiResponseTags } from 'src/common/helper/decorators/api-response-tags.decorator';
+import { PriceEndpoints } from 'src/shared/endpoints';
 
-@ApiTags('Alerts')
+@ApiTags('Price Tracker')
 @ApiResponseTags()
 @Controller('price-tracker')
 export class PriceTrackerController {
@@ -23,7 +24,7 @@ export class PriceTrackerController {
     await this.priceTrackerService.fetchPrices();
   }
 
-  @Get('hourly')
+  @Get(PriceEndpoints.getHourlyPrice())
   async getHourlyPrices() {
     return await this.priceTrackerService.findHourlyPrices();
   }

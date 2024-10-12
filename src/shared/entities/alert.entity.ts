@@ -13,7 +13,7 @@ export class Alert {
   id: number;
 
   @ManyToOne(() => Chain, (chain) => chain.alerts)
-  @JoinColumn({ name: 'chainId' }) // Define the foreign key column name
+  @JoinColumn({ name: 'chainId' })
   chain: Chain;
 
   @Column('numeric', { precision: 15, scale: 6 })

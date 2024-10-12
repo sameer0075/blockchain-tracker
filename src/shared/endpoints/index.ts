@@ -1,3 +1,5 @@
-const PriceEndpoints = {};
+const PriceEndpoints = {
+  getHourlyPrice: () => `hourly`,
+};
 
 export { PriceEndpoints };
