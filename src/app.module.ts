@@ -9,6 +9,7 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { PreventMultipleClicksInterceptor } from './common/helper/decorators/prevent-multiple-api-calls.decorator';
 import { HttpExceptionFilter } from './common/helper/exception-filter';
+import { PriceTrackerModule } from './price-tracker/price-tracker.module';
 
 
 @Module({
@@ -27,9 +28,10 @@ import { HttpExceptionFilter } from './common/helper/exception-filter';
         },
       },
       defaults: {
-        from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM_MAIL}>`,
+        from: `${process.env.EMAIL_USERNAME} <${process.env.EMAIL_FROM_MAIL}>`,
       },
     }),
+    PriceTrackerModule,
   ],
   controllers: [AppController],
   providers: [

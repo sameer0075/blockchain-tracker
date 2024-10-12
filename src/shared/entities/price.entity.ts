@@ -7,7 +7,7 @@ export class Price {
     id: number;
 
     @ManyToOne(() => Chain, (chain) => chain.prices)
-    @JoinColumn({ name: 'chain_id' }) // Define the foreign key column name
+    @JoinColumn({ name: 'chainId' }) // This sets 'chain_id' as the foreign key
     chain: Chain;
 
     @Column('numeric', { precision: 15, scale: 6 })
