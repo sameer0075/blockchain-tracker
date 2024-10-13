@@ -1,5 +1,8 @@
 import { HttpException, Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+
+import { Repository } from 'typeorm';
+
 import PostgreStatusCode from 'src/common/enums/ErrorCodes';
 import { BaseService } from 'src/common/services/base.service';
 import { EmailService } from 'src/common/services/mailer.service';
@@ -10,7 +13,6 @@ import {
 } from 'src/common/strategies/moralise.strategy';
 import { Chain } from 'src/shared/entities/chain.entity';
 import { Price } from 'src/shared/entities/price.entity';
-import { Repository } from 'typeorm';
 
 @Injectable()
 export class PriceTrackerService {
@@ -214,7 +216,7 @@ export class PriceTrackerService {
         polygonPrices,
       };
     } catch (error) {
-      console.log(" error",error)
+      console.log(' error', error);
       throw new HttpException(
         error.message,
         PostgreStatusCode.InternalServerError,

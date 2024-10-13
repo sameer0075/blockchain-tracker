@@ -1,12 +1,14 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+
+import { Repository } from 'typeorm';
+
 import PostgreStatusCode from 'src/common/enums/ErrorCodes';
 import { BaseService } from 'src/common/services/base.service';
 import { EmailService } from 'src/common/services/mailer.service';
 import { getTokenPrice } from 'src/common/strategies/moralise.strategy';
 import { Alert } from 'src/shared/entities/alert.entity';
 import { Chain } from 'src/shared/entities/chain.entity';
-import { Repository } from 'typeorm';
 
 @Injectable()
 export class AlertService {

@@ -1,9 +1,10 @@
+import { Logger } from '@nestjs/common';
+
 import { DataSourceOptions } from 'typeorm';
 import * as dotenv from 'dotenv';
-import { Logger } from '@nestjs/common';
 dotenv.config();
 
-console.log('process.env.DATABASE_UR', process.env.DATABASE_URL);
+Logger.log('process.env.DATABASE_UR', process.env.DATABASE_URL);
 const databaseConfig: DataSourceOptions = {
   type: 'postgres',
   url: process.env.DATABASE_URL,
