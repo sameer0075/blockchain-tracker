@@ -184,7 +184,7 @@ export class PriceTrackerService {
         .select('price.*')
         .where('price.timestamp >= :pastDate', { pastDate })
         .andWhere('price.timestamp <= :now', { now })
-        .andWhere('price.chainId = :chainId', { chainId: ethereumExist.id })
+        .andWhere('price.chainId = :chainId', { chainId: ethereumExist?.id })
         .orderBy('price.timestamp', 'ASC')
         .getRawMany();
 
@@ -194,7 +194,7 @@ export class PriceTrackerService {
         .select('price.*')
         .where('price.timestamp >= :pastDate', { pastDate })
         .andWhere('price.timestamp <= :now', { now })
-        .andWhere('price.chainId = :chainId', { chainId: polygonExist.id })
+        .andWhere('price.chainId = :chainId', { chainId: polygonExist?.id })
         .orderBy('price.timestamp', 'ASC')
         .getRawMany();
 
@@ -214,6 +214,7 @@ export class PriceTrackerService {
         polygonPrices,
       };
     } catch (error) {
+      console.log(" error",error)
       throw new HttpException(
         error.message,
         PostgreStatusCode.InternalServerError,

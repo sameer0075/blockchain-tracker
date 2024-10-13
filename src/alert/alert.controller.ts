@@ -25,7 +25,7 @@ export class AlertController {
   }
 
   @Cron(CronExpression.EVERY_5_MINUTES)
-  async handleCron() {
+  async handleAlerts() {
     await this.alertService.checkAlerts();
   }
 }
