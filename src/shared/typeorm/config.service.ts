@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 import { Logger } from '@nestjs/common';
 dotenv.config();
 
-Logger.log('process.env.DATABASE_UR', process.env.DATABASE_UR);
+console.log('process.env.DATABASE_UR', process.env.DATABASE_URL);
 const databaseConfig: DataSourceOptions = {
   type: 'postgres',
   url: process.env.DATABASE_URL,
