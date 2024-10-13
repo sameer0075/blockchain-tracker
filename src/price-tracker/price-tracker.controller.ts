@@ -28,4 +28,9 @@ export class PriceTrackerController {
   async getHourlyPrices() {
     return await this.priceTrackerService.findHourlyPrices();
   }
+
+  @Post(PriceEndpoints.swapRate())
+  async swapRate(@Body() data: { ethAmount: number }) {
+    return await this.priceTrackerService.swapRate(data.ethAmount);
+  }
 }

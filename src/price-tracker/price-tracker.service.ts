@@ -4,6 +4,7 @@ import PostgreStatusCode from 'src/common/enums/ErrorCodes';
 import { BaseService } from 'src/common/services/base.service';
 import { EmailService } from 'src/common/services/mailer.service';
 import {
+  getBtcPriceInUsd,
   getHistoricalBlock,
   getTokenPrice,
 } from 'src/common/strategies/moralise.strategy';
@@ -218,5 +219,28 @@ export class PriceTrackerService {
         PostgreStatusCode.InternalServerError,
       );
     }
+  }
+
+  async swapRate(ethAmount: number) {
+    const btcUsdPrice = await getBtcPriceInUsd();
+    const etheriumData = await getTokenPrice(
+      '0x1',
+      'percent_change',
+      process.env.ETH_ADDRESS,
+    );
+
+    const ethUsdPrice = etheriumData.jsonResponse.usdPrice;
+    const btcAmount = (ethAmount * ethUsdPrice) / btcUsdPrice;
+
+    // Calculate the total fee (3%)
+    const feePercentage = 0.03;
+    const totalFeeEth = ethAmount * feePercentage;
+    const totalFeeUsd = totalFeeEth * ethUsdPrice;
+
+    return {
+      btcAmount: btcAmount,
+      totalFeeEth: totalFeeEth,
+      totalFeeUsd: totalFeeUsd,
+    };
   }
 }

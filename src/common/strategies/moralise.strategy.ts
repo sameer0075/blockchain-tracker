@@ -1,5 +1,6 @@
 import Moralis from 'moralis';
 import * as dotenv from 'dotenv';
+import axios from 'axios';
 
 dotenv.config();
 
@@ -78,4 +79,16 @@ const getHistoricalPrice = async (
   }
 };
 
-export { getTokenPrice, getHistoricalPrice, getHistoricalBlock };
+const getBtcPriceInUsd = async () => {
+  const response = await axios.get(
+    'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd',
+  );
+  return response.data?.bitcoin.usd;
+};
+
+export {
+  getTokenPrice,
+  getHistoricalPrice,
+  getHistoricalBlock,
+  getBtcPriceInUsd,
+};

@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import {
+  getBtcPriceInUsd,
   getHistoricalBlock,
   getTokenPrice,
 } from './common/strategies/moralise.strategy';
@@ -7,6 +8,8 @@ import {
 @Injectable()
 export class AppService {
   async getHello() {
+    const btc = await getBtcPriceInUsd();
+    console.log('btc', btc);
     const ethBlock: any = await getHistoricalBlock(
       '0x1',
       process.env.ETH_ADDRESS,
